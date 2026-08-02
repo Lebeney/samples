@@ -1,0 +1,3 @@
+instrument,best_RR_on_train,train_mean_ret%,test_mean_ret%,test_%green,test_avg_trades,test_worst%
+Boom 1000,1.5,-0.44,-1.43,18.0,3.0,-4.9
+Crash 1000,1.5,0.24,-1.14,20.0,3.0,-3.0

@@ -63,6 +63,9 @@ class Params:
     # trigger
     trigger_mode: str = "open"          # "open" or "extreme"
     # target
+    target_mode: str = "sr"             # "sr" = nearest fractal/round S/R (default)
+    #                                     "rr" = fixed reward:risk multiple of the stop
+    rr_multiple: float = 1.5            # target distance = rr_multiple * risk (target_mode="rr")
     fractal_n: int = 2                  # candles each side for a fractal
     min_target_atr_mult: float = 0.5    # skip if target closer than this * ATR
     round_increment: float = 5.0        # $5 round-number S/R levels
@@ -328,31 +331,38 @@ def detect_signals(df: pd.DataFrame, p: Params) -> list[Signal]:
             if stop <= entry_price:
                 continue
 
-        # ---- target: nearest valid fractal OR round number ------------------
-        candidates = []  # (distance, level, kind)
-        if direction == 1:
-            for cidx, lvl in frac_high:
-                if cidx <= i and lvl > entry_price:
-                    candidates.append((lvl - entry_price, lvl, "fractal"))
-            r = math.ceil(entry_price / p.round_increment) * p.round_increment
-            if r <= entry_price:
-                r += p.round_increment
-            candidates.append((r - entry_price, r, "round"))
+        # ---- target ---------------------------------------------------------
+        if p.target_mode == "rr":
+            # fixed reward:risk multiple of the stop distance
+            risk = abs(entry_price - stop)
+            target = entry_price + direction * p.rr_multiple * risk
+            kind = "rr"
         else:
-            for cidx, lvl in frac_low:
-                if cidx <= i and lvl < entry_price:
-                    candidates.append((entry_price - lvl, lvl, "fractal"))
-            r = math.floor(entry_price / p.round_increment) * p.round_increment
-            if r >= entry_price:
-                r -= p.round_increment
-            candidates.append((entry_price - r, r, "round"))
+            # nearest valid fractal OR round number (default "sr")
+            candidates = []  # (distance, level, kind)
+            if direction == 1:
+                for cidx, lvl in frac_high:
+                    if cidx <= i and lvl > entry_price:
+                        candidates.append((lvl - entry_price, lvl, "fractal"))
+                r = math.ceil(entry_price / p.round_increment) * p.round_increment
+                if r <= entry_price:
+                    r += p.round_increment
+                candidates.append((r - entry_price, r, "round"))
+            else:
+                for cidx, lvl in frac_low:
+                    if cidx <= i and lvl < entry_price:
+                        candidates.append((entry_price - lvl, lvl, "fractal"))
+                r = math.floor(entry_price / p.round_increment) * p.round_increment
+                if r >= entry_price:
+                    r -= p.round_increment
+                candidates.append((entry_price - r, r, "round"))
 
-        min_dist = p.min_target_atr_mult * a
-        valid = [ct for ct in candidates if ct[0] >= min_dist]
-        if not valid:
-            continue
-        valid.sort(key=lambda x: x[0])
-        _, target, kind = valid[0]
+            min_dist = p.min_target_atr_mult * a
+            valid = [ct for ct in candidates if ct[0] >= min_dist]
+            if not valid:
+                continue
+            valid.sort(key=lambda x: x[0])
+            _, target, kind = valid[0]
 
         signals.append(Signal(
             trigger_idx=i, entry_idx=e, direction=direction,
