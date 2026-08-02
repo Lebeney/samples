@@ -1,0 +1,43 @@
+instrument,tf,strategy,train_exp,test_exp,test_stderr
+Step Index,1m,momentum1,-0.001,-0.0001,0.0021
+Step Index,1m,meanrev1,0.001,0.0001,0.0021
+Step Index,1m,momentum3,-0.0008,0.0113,0.0029
+Step Index,1m,streak3_fade,0.0008,-0.0113,0.0029
+Step Index,1m,breakout10,0.0034,0.0003,0.003
+Step Index,1m,fade_breakout10,-0.0034,-0.0003,0.003
+Step Index,1m,engulf_cont,0.0022,-0.0172,0.0051
+Step Index,5m,momentum1,-0.0015,0.0027,0.0043
+Step Index,5m,meanrev1,0.0015,-0.0027,0.0043
+Step Index,5m,momentum3,0.0193,-0.013,0.0091
+Step Index,5m,streak3_fade,-0.0193,0.013,0.0091
+Step Index,5m,breakout10,0.0192,-0.0105,0.0093
+Step Index,5m,fade_breakout10,-0.0192,0.0105,0.0093
+Step Index,5m,engulf_cont,0.0129,-0.0174,0.0202
+Step Index,15m,momentum1,-0.0029,-0.0104,0.0068
+Step Index,15m,meanrev1,0.0029,0.0104,0.0068
+Step Index,15m,momentum3,-0.0106,0.0068,0.0183
+Step Index,15m,streak3_fade,0.0106,-0.0068,0.0183
+Step Index,15m,breakout10,0.017,-0.0394,0.0248
+Step Index,15m,fade_breakout10,-0.017,0.0394,0.0248
+Step Index,15m,engulf_cont,0.0077,0.0251,0.0306
+Step Index 500,1m,momentum1,-0.001,-0.0001,0.0021
+Step Index 500,1m,meanrev1,0.001,0.0001,0.0021
+Step Index 500,1m,momentum3,-0.0008,0.0113,0.0029
+Step Index 500,1m,streak3_fade,0.0008,-0.0113,0.0029
+Step Index 500,1m,breakout10,0.0034,0.0003,0.003
+Step Index 500,1m,fade_breakout10,-0.0034,-0.0003,0.003
+Step Index 500,1m,engulf_cont,0.0022,-0.0172,0.0051
+Step Index 500,5m,momentum1,-0.0015,0.0027,0.0043
+Step Index 500,5m,meanrev1,0.0015,-0.0027,0.0043
+Step Index 500,5m,momentum3,0.0193,-0.013,0.0091
+Step Index 500,5m,streak3_fade,-0.0193,0.013,0.0091
+Step Index 500,5m,breakout10,0.0192,-0.0105,0.0093
+Step Index 500,5m,fade_breakout10,-0.0192,0.0105,0.0093
+Step Index 500,5m,engulf_cont,0.0129,-0.0174,0.0202
+Step Index 500,15m,momentum1,-0.0029,-0.0104,0.0068
+Step Index 500,15m,meanrev1,0.0029,0.0104,0.0068
+Step Index 500,15m,momentum3,-0.0106,0.0068,0.0183
+Step Index 500,15m,streak3_fade,0.0106,-0.0068,0.0183
+Step Index 500,15m,breakout10,0.017,-0.0394,0.0248
+Step Index 500,15m,fade_breakout10,-0.017,0.0394,0.0248
+Step Index 500,15m,engulf_cont,0.0077,0.0251,0.0306
