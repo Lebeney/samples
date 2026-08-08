@@ -1,0 +1,28 @@
+{
+  "V75": {
+    "train_rows": 2629440,
+    "holdout_rows": 2629440,
+    "train_span": [
+      1470614400,
+      1628380800
+    ],
+    "holdout_span": [
+      1628380800,
+      1786147200
+    ],
+    "holdout_sha256": "d0a5030de6ef93b7e05f0aeedbdb9f7dcc867d5f8e7d560f7341fd3885bc5d30"
+  },
+  "V100": {
+    "train_rows": 2629440,
+    "holdout_rows": 2629440,
+    "train_span": [
+      1470614400,
+      1628380800
+    ],
+    "holdout_span": [
+      1628380800,
+      1786147200
+    ],
+    "holdout_sha256": "4329a0a92c1e3c7b7fd5a088a9cbadcfdf5e1dd4cbac565a01acb351dc98af86"
+  }
+}
